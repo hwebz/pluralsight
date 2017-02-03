@@ -1,0 +1,20 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>Angular Fundamentals</title>
+        
+    </head>
+    <body ng-app="app">
+        
+		<h1 ng-controller="HelloWorldCtrl">{{helloMessage}}</h1>
+
+        <script src='https://code.angularjs.org/1.4.0/angular.js'></script>
+		<script>
+			angular.module('app', []).controller('HelloWorldCtrl', function($scope) {
+				$scope.helloMessage = "Welcome to Angular Fundamentals course";
+			});
+		</script>
+    </body>
+</html>
