@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<clients>
+    <client>
+        <name>John Doe</name>
+        <account_number>87234838</account_number>
+    </client>
+    <client>
+        <name>Janet Smith</name>
+        <account_number>72384329</account_number>
+    </client>
+</clients>
