@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<html>
+	<head>
+		<title>XML Example</title>
+	</head>
+	<body background='#f3c'>
+		<p>Moved to <a href="http://example.com">example.com</a></p>
+		foo &amp; bar
+	</body>
+</html>
