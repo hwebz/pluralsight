@@ -8,26 +8,29 @@
         <link href="style.css" rel="stylesheet">
     </head>
     <!--<body ng-app="myApp">-->
-    <body ng-app>
+    <!--<body ng-app>-->
+    <body>
         
-        <div ng-controller="MainController">
-            <h1>{{message}}</h1>
-            <div>
-                <div>First name: {{person.firstName}}</div>
-                <div>Last name: {{person.lastName}}</div>
+        <div ng-app="githubViewer">
+            <div ng-controller="MainController">
+                <h1>{{message}}</h1>
                 <div>
-                    <img ng-src="{{person.imageSrc}}" alt="{{person.firstName}} {{person.lastName}}">
+                    <div>First name: {{person.firstName}}</div>
+                    <div>Last name: {{person.lastName}}</div>
+                    <div>
+                        <img ng-src="{{person.imageSrc}}" alt="{{person.firstName}} {{person.lastName}}">
+                    </div>
                 </div>
             </div>
-        </div>
 
-        <div ng-controller="GithubController">
-            <div>
-                <div>{{error}}</div>
-                <div>Name: {{user.name}}</div>
-                <div>Location: {{user.location}}</div>
+            <div ng-controller="GithubController">
                 <div>
-                    <img ng-src="{{user.avatar_url}}" alt="{{user.name}}">
+                    <div>{{error}}</div>
+                    <div>Name: {{user.name}}</div>
+                    <div>Location: {{user.location}}</div>
+                    <div>
+                        <img ng-src="{{user.avatar_url}}" alt="{{user.name}}">
+                    </div>
                 </div>
             </div>
         </div>
