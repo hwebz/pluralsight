@@ -1,0 +1,7 @@
+<div>
+    <form name="searchUser">
+        <input type="search" ng-model="username" placeholder="User to find" />
+        <input type="submit" value="Search" ng-click="search(username)" />
+    </form>
+    <p ng-hide="countdown < 1">Search will be starting in {{ countdown }} second{{ countdown > 1 ? 's' : ''}}</p>
+</div>
