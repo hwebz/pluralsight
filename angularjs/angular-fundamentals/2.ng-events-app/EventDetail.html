@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="eventsApp">
+    <head>
+        <title>Events App</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-alpha.6/css/bootstrap.min.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <link href="css/app.css" rel="stylesheet">
+    </head>
+    <body ng-cloak>
+    
+        <div class="container">
+            <div class="navbar">
+                <div class="navbar-inner">
+                    <ul class="nav">
+                        <li><a href="/NewEvent.html">Create Event</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div ng-controller="EventController" style="padding-left: 20px; padding-right: 20px;">
+                <img ng-src="{{event.imageUrl}}" alt="{{event.name}}">
+                <div class="row">
+                    <div class="col-md-12">
+                        <h2 ng-style="myStyle" ng-bind-template="{{event.name}} {{event.date}}"></h2>
+                    </div>
+                </div>
+
+                <button class="btn" ng-disabled="buttonDisabled">Disabled</button>
+                <div ng-non-bindable>{{1 + 2}}</div>
+                <div ng-bind-html="snippet"></div>
+
+                <h2 ng-show="boolValue">Show This</h2>
+                <h2 ng-hide="boolValue">Hide This</h2>
+
+                <div class="row">
+                    <div class="col-md-3">
+                        <div><strong>Date:</strong> {{event.date}}</div>
+                        <div><strong>Time:</strong> {{event.time}}</div>
+                    </div>
+                    <div class="col-md-4">
+                        <address>
+                            <strong>Address:</strong><br />
+                            {{event.location.address}}<br />
+                            {{event.location.city}}, {{event.location.province}}
+                        </address>
+                    </div>
+                </div>
+                <hr>
+                <h3>Sessions</h3>
+                Order By:
+                <select ng-model="sortOrder" class="input-small">
+                    <option value="name">Name</option>
+                    <option value="-upVoteCount">Votes</option>
+                </select>
+                show:
+                <select ng-model="query.level" class="input-medium">
+                    <option selected value="">All</option>
+                    <option value="introductory">Introductory</option>
+                    <option value="intermediate">Intermediate</option>
+                    <option value="advanced">Advanced</option>
+                </select>
+                <ul class="thumbnails">
+                    <li ng-repeat="session in event.sessions | orderBy:sortOrder | filter:query | limitTo:2">
+                        <div class="row session">
+                            <div class="col-xs-2 col-md-1 well votingWidget">
+                                <div class="votingButton" ng-click="upVoteSession(session)">
+                                    <i class="fa fa-chevron-up"></i>
+                                </div>
+                                <div class="badge badge-inverse">
+                                    <div>{{session.upVoteCount}}</div>
+                                </div>
+                                <div class="votingButton" ng-click="downVoteSession(session)">
+                                    <i class="fa fa-chevron-down"></i>
+                                </div>
+                            </div>
+                            <div class="well col-xs-10 col-md-11">
+                                <h4 class="well-title">{{session.name}}</h4>
+                                <h6 style="margin-top: -10px;">{{session.creatorName}}</h6>
+                                <p>Duration: {{session.duration | durations}}</p>
+                                <p>Level: {{session.level}}</p>
+
+                                <p>Abstract: {{session.abstract}}</p>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.8.3/underscore-min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-alpha.6/js/bootstrap.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.5/angular.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.5/angular-sanitize.min.js"></script>
+
+        <script src="js/app.js"></script>
+        <script src="js/filters.js"></script>
+        <script src="js/services/eventData.js"></script>
+        <script src="js/controllers/EventController.js"></script>
+    </body>
+</html>

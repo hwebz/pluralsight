@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="eventsApp">
+    <head>
+        <title>Events App</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-alpha.6/css/bootstrap.min.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <link href="css/app.css" rel="stylesheet">
+    </head>
+    <body ng-cloak>
+    
+        <div class="container">
+            <div class="navbar">
+                <div class="navbar-inner">
+                    <ul class="nav">
+                        <li><a href="NewEvent.html">Create Event</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div ng-controller="EditEventController" style="padding-left: 20px;padding-right: 20px;">
+                <div class="container">
+                    <h1>New Event</h1>
+                    <hr>
+                    <form name="newEventForm">
+                        <fieldset>
+                            <label for="eventName">Event Name:</label>
+                            <input type="text" id="eventName" required ng-model="event.name" class="form-control" placeholder="Name of your event...">
+                            <label for="eventDate">Event Date:</label>
+                            <input type="text" id="eventDate" required ng-pattern="/\d\d/\d\d/\d\d\d\d/" ng-model="event.date" class="form-control" placeholder="format (mm/dd/yyy)...">
+                            <label for="eventTime">Event Time:</label>
+                            <input type="text" id="eventTime" ng-model="event.time" class="form-control" placeholder="start and end time...">
+                            <label for="eventLocation">Event Location:</label>
+                            <input type="text" id="eventLocation" ng-model="event.location.address" class="form-control" placeholder="Address of event...">
+                            <input type="text" id="eventCity" ng-model="event.location.city" class="form-control" class="input-small" placeholder="City...">
+                            <input type="text" id="eventProvince" ng-model="event.location.province" class="form-control" class="input-small" placeholder="Province...">
+
+                            <label for="eventImageUrl">Image:</label>
+                            <input type="url" id="eventImageUrl" ng-model="event.imageUrl" class="form-control" class="input-xlarge" placeholder="Url of image...">
+                        </fieldset>
+
+                        <img ng-src="{{event.imageUrl}}" ng-alt="{{event.name}}">
+
+                        <button class="btn btn-primary" ng-disabled="!newEventForm.$valid" ng-click="saveEvent(event, newEventForm)" type="submit">Save</button>
+                        <button class="btn btn-default" ng-click="cancelEdit()" type="reset">Cancel</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.8.3/underscore-min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-alpha.6/js/bootstrap.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.5/angular.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.5/angular-sanitize.min.js"></script>
+
+        <script src="js/app.js"></script>
+        <script src="js/filters.js"></script>
+        <script src="js/controllers/EditEventController.js"></script>
+    </body>
+</html>
